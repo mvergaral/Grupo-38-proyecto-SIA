@@ -1,0 +1,6 @@
+com/grupo38/config/DatabaseInitializer.class
+com/grupo38/App.class
+com/grupo38/config/HibernateUtil.class
+module-info.class
+com/grupo38/PrimaryController.class
+com/grupo38/SecondaryController.class
