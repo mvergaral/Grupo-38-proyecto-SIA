@@ -35,14 +35,14 @@ public class DatabaseInitializer {
             // Comando SQL para crear el rol (usuario)
             String sql = "DO $$ " +
                     "BEGIN " +
-                    "   IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'user38') THEN " +
-                    "      CREATE ROLE user38 WITH LOGIN PASSWORD 'your_password'; " +
+                    "   IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'grupo38') THEN " +
+                    "      CREATE ROLE grupo38 WITH LOGIN PASSWORD 'your_password'; " +
                     "   END IF; " +
                     "END $$;";
 
             statement.execute(sql);
 
-            System.out.println("Role user38 created or already exists!");
+            System.out.println("Role grupo38 created or already exists!");
 
         } catch (Exception e) {
             e.printStackTrace();
