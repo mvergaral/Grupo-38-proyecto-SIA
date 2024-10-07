@@ -34,8 +34,11 @@ A continuación, se listan las versiones de software recomendadas para ejecutar 
      ```bash
      mvn -version
      ```
+4.- **Instalar JDBC Driver:**
+   - Descarga el driver JDBC de PostgreSQL desde [aquí](https://learn.microsoft.com/es-es/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-ver16#download).
+   - Seguir las instrucciones de la carpeta descargada.
 
-4. **Clonar el repositorio y ejecutar el proyecto:**
+5. **Clonar el repositorio y ejecutar el proyecto:**
    - Abre una terminal y clona el repositorio:
      ```bash
      git clone https://github.com/mvergaral/Grupo-38-proyecto-SIA.git
