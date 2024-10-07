@@ -8,9 +8,16 @@
         <property name="hibernate.connection.password">grupo38</property>
 
         <!-- Configuración adicional -->
-        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.archive.autodetection">class,hbm</property>
+
+        <!-- Mapeo de las clases -->
+        <mapping class="com.grupo38.model.Sucursal"/>
+        <mapping class="com.grupo38.model.Equipo"/>
+        <mapping class="com.grupo38.model.Arriendo"/>
+        <mapping class="com.grupo38.model.Maquina"/>
+        <mapping class="com.grupo38.model.Herramienta"/>
     </session-factory>
 </hibernate-configuration>

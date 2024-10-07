@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.grupo38.controller.MainController" style="-fx-background-color: #f0f4f8;">
+
+    <!-- Barra de menús -->
+    <top>
+        <MenuBar style="-fx-background-color: #2e8b57; -fx-text-fill: white;">
+            <Menu text="Menu" style="-fx-text-fill: white;">
+                <MenuItem text="Gestionar Sucursales" onAction="#verSucursales"/>
+                <MenuItem text="Gestionar Equipos" onAction="#gestionarEquipos"/>
+            </Menu>
+        </MenuBar>
+    </top>
+
+    <!-- Mensaje de bienvenida en el centro -->
+    <center>
+        <VBox fx:id="contentPane" alignment="CENTER" spacing="20" style="-fx-padding: 50px;">
+            <Label text="Bienvenido al sistema EquipOS" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e8b57;"/>
+            <Label text="Gestione sus sucursales y equipos de manera eficiente" style="-fx-font-size: 16px; -fx-text-fill: #555555;"/>
+        </VBox>
+    </center>
+
+</BorderPane>

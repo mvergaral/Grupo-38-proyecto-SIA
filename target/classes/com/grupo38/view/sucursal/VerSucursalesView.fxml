@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupo38.controller.VerSucursalesController" spacing="15" alignment="CENTER" style="-fx-padding: 20px; -fx-background-color: #f4f4f4;">
+
+    <!-- Título de la vista -->
+    <Label text="Listado de Sucursales" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2e8b57;" />
+
+    <!-- Tabla de sucursales -->
+    <TableView fx:id="sucursalTableView" style="-fx-border-color: #dcdcdc; -fx-border-radius: 5px; -fx-padding: 10px;">
+        <columns>
+            <TableColumn fx:id="idColumn" text="ID" prefWidth="100" />
+            <TableColumn fx:id="comunaColumn" text="Comuna" prefWidth="150" />
+            <TableColumn fx:id="direccionColumn" text="Dirección" prefWidth="200" />
+            <TableColumn fx:id="regionColumn" text="Región" prefWidth="150" />
+            <TableColumn fx:id="actionColumn" text="Añadir Equipos" prefWidth="100" />
+        </columns>
+    </TableView>
+
+    <!-- Botón general para realizar acciones adicionales, si es necesario -->
+    <Button text="Añadir Sucursal" onAction="#añadirSucursal" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8px 15px;" />
+
+</VBox>

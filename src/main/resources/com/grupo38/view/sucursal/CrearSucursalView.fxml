@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupo38.controller.CrearSucursalController" hgap="20" vgap="15" alignment="CENTER">
+
+    <!-- Ajustes generales del GridPane -->
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Título de la vista -->
+    <Label text="Crear Nueva Sucursal" style="-fx-font-size: 18px; -fx-font-weight: bold;" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" alignment="CENTER"/>
+
+    <!-- Campo Región -->
+    <Label text="Región:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="regionField" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Ingrese la región" style="-fx-pref-width: 200px;"/>
+
+    <!-- Campo Comuna -->
+    <Label text="Comuna:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <TextField fx:id="comunaField" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="Ingrese la comuna" style="-fx-pref-width: 200px;"/>
+
+    <!-- Campo Dirección -->
+    <Label text="Dirección:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+    <TextField fx:id="direccionField" GridPane.columnIndex="1" GridPane.rowIndex="3" promptText="Ingrese la dirección" style="-fx-pref-width: 200px;"/>
+
+    <!-- Botón Crear Sucursal -->
+    <Button text="Crear Sucursal" onAction="#crearSucursal" GridPane.columnIndex="1" GridPane.rowIndex="4" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+</GridPane>

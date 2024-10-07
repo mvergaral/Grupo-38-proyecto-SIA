@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupo38.controller.EditarEquipoController" spacing="20" alignment="CENTER" style="-fx-padding: 20px; -fx-background-color: #f5f5f5; -fx-border-radius: 10; -fx-border-color: #ccc; -fx-border-width: 2px; -fx-background-radius: 10;">
+
+    <!-- Título -->
+    <Label text="Editar Equipo" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e8b57;" />
+
+    <!-- Sección de Nombre del equipo -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Nombre del equipo:" style="-fx-font-size: 14px;" />
+        <TextField fx:id="nombreEquipoField" promptText="Ingresa el nombre" style="-fx-font-size: 14px; -fx-pref-width: 200px;" />
+    </HBox>
+
+    <!-- Sección de Tipo de equipo -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Tipo de equipo:" style="-fx-font-size: 14px;" />
+        <ComboBox fx:id="tipoEquipoComboBox" style="-fx-pref-width: 200px;" />
+    </HBox>
+
+    <!-- Botón para guardar cambios -->
+    <Button text="Guardar cambios" onAction="#guardarCambios" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8px 15px; -fx-border-radius: 5px;" />
+
+</VBox>

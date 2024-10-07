@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupo38.controller.GestionarEquiposController" spacing="20" alignment="CENTER">
+
+    <!-- Título de la vista -->
+    <Label text="Gestión de Equipos" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e8b57;" />
+
+    <!-- Contenedor para los filtros y selección -->
+    <GridPane hgap="10" vgap="15" alignment="CENTER">
+        <!-- Seleccionar Sucursal -->
+        <Label text="Sucursal:" style="-fx-font-size: 14px;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <ComboBox fx:id="sucursalComboBox" onAction="#cargarEquipos" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <!-- Filtrar por tipo de equipo -->
+        <Label text="Tipo de Equipo:" style="-fx-font-size: 14px;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <ComboBox fx:id="tipoEquipoComboBox" onAction="#filtrarEquipos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <!-- Filtrar por estado de equipo -->
+        <Label text="Estado del Equipo:" style="-fx-font-size: 14px;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <ComboBox fx:id="estadoComboBox" onAction="#filtrarEquipos" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    </GridPane>
+
+    <!-- Lista de equipos -->
+    <VBox spacing="10" alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #f0f0f0; -fx-border-color: #cccccc; -fx-border-radius: 5px;">
+        <Label text="Equipos Disponibles" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+        <ListView fx:id="equipoListView" style="-fx-pref-height: 150px; -fx-max-width: 500px;" />
+    </VBox>
+
+    <!-- Contenedor para los botones de acciones -->
+    <HBox spacing="20" alignment="CENTER" style="-fx-padding: 10;">
+        <!-- Botón para arrendar equipo -->
+        <Button text="Arrendar" onAction="#arrendarEquipo" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8px 15px; -fx-border-radius: 5px;" />
+
+        <!-- Botón para devolver equipo -->
+        <Button text="Devolver" onAction="#devolverEquipo" style="-fx-background-color: #FF6347; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8px 15px; -fx-border-radius: 5px;" />
+
+        <!-- Botón para eliminar equipo -->
+        <Button text="Eliminar" onAction="#eliminarEquipo" style="-fx-background-color: #d9534f; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8px 15px; -fx-border-radius: 5px;" />
+
+        <!-- Botón para editar equipo -->
+        <Button text="Editar" onAction="#editarEquipo" style="-fx-background-color: #f0ad4e; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8px 15px; -fx-border-radius: 5px;" />
+
+        <!-- Botón para exportar equipos -->
+        <Button text="Exportar a CSV" onAction="#exportarEquiposACSV" style="-fx-background-color: #5bc0de; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8px 15px; -fx-border-radius: 5px;" />
+    </HBox>
+</VBox>
