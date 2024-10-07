@@ -35,8 +35,8 @@ public class DatabaseInitializer {
             // Comando SQL para crear el rol (usuario)
             String sql = "DO $$ " +
                     "BEGIN " +
-                    "   IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = grupo38) THEN " +
-                    "      CREATE ROLE grupo38 WITH LOGIN PASSWORD grupo38; " +
+                    "   IF NOT EXISTS (SELECT FROM pg_catalog.pg_roles WHERE rolname = 'grupo38') THEN " +
+                    "      CREATE ROLE grupo38 WITH LOGIN PASSWORD 'grupo38'; " +
                     "   END IF; " +
                     "END $$;";
 
