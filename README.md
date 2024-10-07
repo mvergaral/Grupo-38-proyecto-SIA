@@ -38,7 +38,7 @@ A continuación, se listan las versiones de software recomendadas para ejecutar 
 4. **Clonar el repositorio y ejecutar el proyecto:**
    - Abre una terminal y clona el repositorio:
      ```bash
-     git clone <URL_DEL_REPOSITORIO>
+     git clone https://github.com/mvergaral/Grupo-38-proyecto-SIA.git
      cd grupo-38-proyecto-sia
      ```
    - Ejecuta el siguiente comando para compilar y ejecutar el proyecto:
