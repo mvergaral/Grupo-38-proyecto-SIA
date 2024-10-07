@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import com.grupo38.config.DatabaseInitializer;
+import com.grupo38.config.DatabaseSeeder;
 import com.grupo38.config.HibernateUtil;
 
 /**
@@ -29,6 +30,9 @@ public class App extends Application {
 
             // Inicializar Hibernate
             HibernateUtil.getSessionFactory();
+
+            // Seeder
+            DatabaseSeeder.seedDatabase();  // Llenar la base de datos con datos de prueba
 
             // Cargar la vista principal
             scene = new Scene(loadFXML("MainView"), 1920, 1080);

@@ -15,5 +15,6 @@
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/exceptions/EquipoNoArrendadoException.java
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/model/Equipo.java
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/model/Herramienta.java
+/Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/config/DatabaseSeeder.java
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/controller/EditarEquipoController.java
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/model/Sucursal.java

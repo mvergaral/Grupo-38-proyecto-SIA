@@ -3,6 +3,7 @@ com/grupo38/App.class
 com/grupo38/controller/AgregarEquipoController.class
 com/grupo38/model/Herramienta.class
 com/grupo38/model/Sucursal.class
+com/grupo38/config/DatabaseSeeder.class
 com/grupo38/model/Arriendo.class
 com/grupo38/exceptions/EquipoNoDisponibleException.class
 com/grupo38/controller/VerSucursalesController$1$1.class
@@ -14,8 +15,12 @@ com/grupo38/controller/SucursalController.class
 module-info.class
 com/grupo38/controller/VerSucursalesController$1.class
 com/grupo38/utils/ErrorHandler.class
+com/grupo38/controller/MainController.class
+com/grupo38/controller/CrearSucursalController.class
 com/grupo38/controller/VerSucursalesController.class
 com/grupo38/controller/GestionarEquiposController$3.class
+com/grupo38/controller/GestionarEquiposController.class
 com/grupo38/exceptions/EquipoNoArrendadoException.class
 com/grupo38/model/Maquina.class
 com/grupo38/controller/GestionarEquiposController$1.class
+com/grupo38/controller/EditarEquipoController.class
