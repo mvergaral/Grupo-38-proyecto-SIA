@@ -35,7 +35,7 @@ public class App extends Application {
             DatabaseSeeder.seedDatabase();  // Llenar la base de datos con datos de prueba
 
             // Cargar la vista principal
-            scene = new Scene(loadFXML("MainView"), 1920, 1080);
+            scene = new Scene(loadFXML("MainView"), 1280, 720);
             stage.setScene(scene);
             stage.setTitle("Gestión de Sucursales");
             stage.setResizable(false);

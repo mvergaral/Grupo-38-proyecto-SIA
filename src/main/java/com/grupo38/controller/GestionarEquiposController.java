@@ -22,6 +22,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.util.Callback;
+
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
 import java.io.File;
@@ -162,9 +164,11 @@ public class GestionarEquiposController {
             try (Session session = HibernateUtil.getSessionFactory().openSession()) {
                 session.beginTransaction();
                 try {
+                    equipoSeleccionado = session.find(Equipo.class, equipoSeleccionado.getId());
+                    Hibernate.initialize( equipoSeleccionado.getArriendos() );
                     sucursalSeleccionada.devolverEquipo(session, equipoSeleccionado.getId());
-                    session.getTransaction().commit();
                     Arriendo ultimoArriendo = equipoSeleccionado.ultimoArriendo();
+                    session.getTransaction().commit();
                     mostrarMensaje("Éxito", "El equipo ha sido devuelto. Total a pagar: $" + ultimoArriendo.getCostoTotal());
                     limpiarCacheEquipos();
                     cargarEquipos();
