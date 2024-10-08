@@ -1,18 +1,32 @@
 package com.grupo38.model;
 
-import jakarta.persistence.*;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-import com.grupo38.exceptions.EquipoNoDisponibleException;
 import com.grupo38.exceptions.EquipoNoArrendadoException;
+import com.grupo38.exceptions.EquipoNoDisponibleException;
 
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PostLoad;
+import jakarta.persistence.Table;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 
+/**
+ * Clase que representa una sucursal dentro del sistema.
+ * Las sucursales tienen una relación OneToMany con los equipos y gestionan
+ * operaciones como añadir, eliminar, arrendar y devolver equipos.
+ */
 @Entity
 @Table(name = "sucursal")
 public class Sucursal {
@@ -41,10 +55,19 @@ public class Sucursal {
     private transient SimpleStringProperty comunaProperty = new SimpleStringProperty();
     private transient SimpleStringProperty direccionProperty = new SimpleStringProperty();
 
-    // Constructor vacío requerido por Hibernate
+    /**
+     * Constructor vacío requerido por Hibernate.
+     */
     public Sucursal() {}
 
-    // Constructor con parámetros
+    /**
+     * Constructor con parámetros.
+     * Permite crear una sucursal con una región, comuna y dirección específicas.
+     *
+     * @param region La región donde se ubica la sucursal.
+     * @param comuna La comuna donde se ubica la sucursal.
+     * @param direccion La dirección de la sucursal.
+     */
     public Sucursal(String region, String comuna, String direccion) {
         this.region = region;
         this.comuna = comuna;
@@ -52,7 +75,9 @@ public class Sucursal {
         actualizarPropiedades(); // Actualizar las propiedades observables
     }
 
-    // Método para actualizar las propiedades observables de JavaFX
+    /**
+     * Actualiza las propiedades observables de JavaFX.
+     */
     private void actualizarPropiedades() {
         this.idProperty.set(this.id);
         this.regionProperty.set(this.region);
@@ -60,7 +85,12 @@ public class Sucursal {
         this.direccionProperty.set(this.direccion);
     }
 
-    // Sobrecarga de métodos: Obtener todos los equipos disponibles (sin parámetros)
+    /**
+     * Obtiene todos los equipos de la sucursal.
+     * 
+     * @param session La sesión de Hibernate.
+     * @return Una lista de todos los equipos de la sucursal.
+     */
     public List<Equipo> equiposDeSucursal(Session session) {
         String hql = "FROM Equipo e WHERE e.sucursal.id = :sucursalId";
         Query<Equipo> query = session.createQuery(hql, Equipo.class);
@@ -68,7 +98,13 @@ public class Sucursal {
         return query.list();
     }
 
-    // Sobrecarga de métodos: Obtener equipos disponibles por tipo (con parámetro tipoEquipo)
+    /**
+     * Obtiene los equipos disponibles de la sucursal por tipo.
+     *
+     * @param session La sesión de Hibernate.
+     * @param tipoEquipo El tipo de equipo a buscar.
+     * @return Una lista de equipos disponibles del tipo especificado.
+     */
     public List<Equipo> equiposDeSucursal(Session session, Class<? extends Equipo> tipoEquipo) {
         String hql = "FROM Equipo e WHERE e.sucursal.id = :sucursalId AND e.prestado = false AND e.class = :tipo";
         Query<Equipo> query = session.createQuery(hql, Equipo.class);
@@ -77,13 +113,23 @@ public class Sucursal {
         return query.list();
     }
 
-    // Método para añadir un equipo a la sucursal
+    /**
+     * Añade un equipo a la sucursal.
+     *
+     * @param session La sesión de Hibernate.
+     * @param equipo El equipo a añadir.
+     */
     public void añadirEquipo(Session session, Equipo equipo) {
         equipo.setSucursal(this);
         session.persist(equipo); // Guardar el equipo en la base de datos
     }
 
-    // Sobrecarga de métodos: Método para eliminar un equipo por su ID
+    /**
+     * Elimina un equipo de la sucursal por su ID.
+     *
+     * @param session La sesión de Hibernate.
+     * @param idEquipo El ID del equipo a eliminar.
+     */
     public void eliminarEquipo(Session session, int idEquipo) {
         Equipo equipo = session.find(Equipo.class, idEquipo); // Usar `find()` para obtener la entidad
         if (equipo != null && equipo.getSucursal().getId() == this.id) {
@@ -93,7 +139,13 @@ public class Sucursal {
         }
     }
 
-    // Método para devolver un equipo (marcarlo como devuelto)
+    /**
+     * Devuelve un equipo, marcando el arriendo como finalizado.
+     *
+     * @param session La sesión de Hibernate.
+     * @param idEquipo El ID del equipo a devolver.
+     * @throws EquipoNoArrendadoException Si el equipo no está arrendado.
+     */
     public void devolverEquipo(Session session, int idEquipo) throws EquipoNoArrendadoException {
         Equipo equipo = session.find(Equipo.class, idEquipo);
         if (equipo != null && equipo.getSucursal().getId() == this.id) {
@@ -107,7 +159,14 @@ public class Sucursal {
         }
     }
 
-    // Método para arrendar un equipo (cambiar su estado a "prestado")
+    /**
+     * Arrenda un equipo de la sucursal.
+     *
+     * @param session La sesión de Hibernate.
+     * @param idEquipo El ID del equipo a arrendar.
+     * @param rutCliente El RUT del cliente que arrendará el equipo.
+     * @throws EquipoNoDisponibleException Si el equipo no está disponible.
+     */
     public void arrendarEquipo(Session session, int idEquipo, String rutCliente) throws EquipoNoDisponibleException {
         try {
             Equipo equipo = session.find(Equipo.class, idEquipo);
@@ -120,77 +179,165 @@ public class Sucursal {
         }
     }
 
+    /**
+     * Genera un nombre legible para la sucursal basado en su dirección y comuna.
+     *
+     * @return El nombre legible de la sucursal.
+     */
     public String generarNombreLegible() {
         return direccion + ", " + comuna;
     }
 
     // Métodos para gestionar la persistencia de Sucursal en Hibernate
 
+    /**
+     * Persiste la sucursal en la base de datos.
+     *
+     * @param session La sesión de Hibernate.
+     */
     public void persistirSucursal(Session session) {
         session.persist(this);
     }
 
+    /**
+     * Actualiza la sucursal en la base de datos.
+     *
+     * @param session La sesión de Hibernate.
+     */
     public void actualizarSucursal(Session session) {
         session.merge(this);
     }
 
+    /**
+     * Elimina la sucursal de la base de datos.
+     *
+     * @param session La sesión de Hibernate.
+     */
     public void eliminarSucursal(Session session) {
         session.remove(this);
     }
 
     // Getters para las propiedades observables
+
+    /**
+     * Obtiene la propiedad observable del ID de la sucursal.
+     *
+     * @return La propiedad observable del ID.
+     */
     public SimpleIntegerProperty idProperty() {
         return new SimpleIntegerProperty(this.id);
     }
 
+    /**
+     * Obtiene la propiedad observable de la región de la sucursal.
+     *
+     * @return La propiedad observable de la región.
+     */
     public SimpleStringProperty regionProperty() {
         return regionProperty;
     }
 
+    /**
+     * Obtiene la propiedad observable de la comuna de la sucursal.
+     *
+     * @return La propiedad observable de la comuna.
+     */
     public SimpleStringProperty comunaProperty() {
         return comunaProperty;
     }
 
+    /**
+     * Obtiene la propiedad observable de la dirección de la sucursal.
+     *
+     * @return La propiedad observable de la dirección.
+     */
     public SimpleStringProperty direccionProperty() {
         return direccionProperty;
     }
 
     // Getters y Setters restantes
 
+    /**
+     * Obtiene la lista de equipos de la sucursal.
+     *
+     * @return La lista de equipos de la sucursal (copia inmutable).
+     */
     public List<Equipo> getEquipos() {
         return List.copyOf(equipos); // Devuelve una copia inmutable de la lista
     }
 
+    /**
+     * Obtiene el ID de la sucursal.
+     *
+     * @return El ID de la sucursal.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Obtiene la región de la sucursal.
+     *
+     * @return La región de la sucursal.
+     */
     public String getRegion() {
         return region;
     }
 
+    /**
+     * Establece la región de la sucursal.
+     *
+     * @param region La nueva región de la sucursal.
+     */
     public void setRegion(String region) {
         this.region = region;
     }
-
+    /**
+     * Obtiene la comuna de la sucursal.
+     *
+     * @return La comuna de la sucursal.
+     */
     public String getComuna() {
         return comuna;
     }
 
+    /**
+     * Establece la comuna de la sucursal.
+     *
+     * @param comuna La nueva comuna de la sucursal.
+     */
     public void setComuna(String comuna) {
         this.comuna = comuna;
     }
 
+    /**
+     * Obtiene la dirección de la sucursal.
+     *
+     * @return La dirección de la sucursal.
+     */
     public String getDireccion() {
         return direccion;
     }
 
+    /**
+     * Establece la dirección de la sucursal.
+     *
+     * @param direccion La nueva dirección de la sucursal.
+     */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
+    /**
+     * Método llamado automáticamente después de que una entidad Sucursal
+     * es cargada desde la base de datos. Este método actualiza las propiedades
+     * observables de JavaFX.
+     *
+     * <p>Este método es anotado con {@link PostLoad}, lo que indica que debe
+     * ejecutarse después de que Hibernate haya cargado los datos de la base
+     * de datos en esta entidad.</p>
+     */
     @PostLoad
     private void onPostLoad() {
         actualizarPropiedades();
     }
-}
