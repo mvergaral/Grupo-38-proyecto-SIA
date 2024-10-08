@@ -341,3 +341,4 @@ public class Sucursal {
     private void onPostLoad() {
         actualizarPropiedades();
     }
+}

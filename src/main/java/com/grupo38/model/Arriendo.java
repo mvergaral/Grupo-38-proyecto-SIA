@@ -69,13 +69,18 @@ public class Arriendo {
      * @return El costo total del arriendo.
      */
     public double calcularCostoTotal() {
-        if (fechaFin == null) {
-            fechaFin = LocalDate.now(); // Si aún no se ha devuelto el equipo, tomar la fecha actual
-        }
+        // Calcular el costo total en base a la tarifa del equipo
+        this.costoTotal = equipo.calcularTarifa();
+        return this.costoTotal;
+    }
 
-        // Calcular la cantidad de días entre la fecha de inicio y la fecha de fin
-        long dias = ChronoUnit.DAYS.between(fechaInicio, fechaFin);
-
+    /**
+     * Calcula el costo total del arriendo en función del número de días
+     * y la tarifa del equipo arrendado.
+     * @param dias Número de días de arriendo.
+     * @return El costo total del arriendo.
+     */
+    public double calcularCostoTotal(Long dias) {
         // Garantizar un mínimo de un día de arriendo
         dias = (dias == 0) ? 1 : dias;
 
@@ -90,7 +95,14 @@ public class Arriendo {
     public void finalizarArriendo() {
         if (this.active) {
             this.fechaFin = LocalDate.now();  // Registrar la fecha de devolución
-            this.calcularCostoTotal();  // Calcular el costo total del arriendo
+            long dias = ChronoUnit.DAYS.between(fechaInicio, fechaFin);
+
+            if (dias == 0) {
+                this.calcularCostoTotal();  // Calcular el costo total del arriendo
+            }
+            else {
+                this.calcularCostoTotal(dias);  // Calcular el costo total del arriendo
+            }
             this.active = false;  // Marcar el arriendo como finalizado
         } else {
             System.out.println("El arriendo ya está finalizado.");
