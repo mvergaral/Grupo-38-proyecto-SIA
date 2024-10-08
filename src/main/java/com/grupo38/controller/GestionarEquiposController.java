@@ -8,6 +8,10 @@ import com.grupo38.model.Sucursal;
 import com.grupo38.config.HibernateUtil;
 import com.grupo38.exceptions.EquipoNoArrendadoException;
 import com.grupo38.exceptions.EquipoNoDisponibleException;
+
+import javafx.util.Duration;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -267,6 +271,11 @@ public class GestionarEquiposController {
         tooltip.show(equipoListView.getScene().getWindow(),
             equipoListView.getScene().getWindow().getX() + equipoListView.getLayoutX(),
             equipoListView.getScene().getWindow().getY() + equipoListView.getLayoutY());
+
+        // Timeline para ocultar el tooltip después de 3 segundos (3000 ms)
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(3000), e -> tooltip.hide()));
+        timeline.setCycleCount(1);  // Ejecuta el timeline solo una vez
+        timeline.play();
     }
 
     public void mostrarMensaje(String titulo, String mensaje) {

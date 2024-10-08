@@ -7,6 +7,7 @@ com/grupo38/config/DatabaseSeeder.class
 com/grupo38/model/Arriendo.class
 com/grupo38/exceptions/EquipoNoDisponibleException.class
 com/grupo38/controller/VerSucursalesController$1$1.class
+com/grupo38/controller/EditarSucursalController.class
 com/grupo38/config/DatabaseInitializer.class
 com/grupo38/model/Equipo.class
 com/grupo38/config/HibernateUtil.class

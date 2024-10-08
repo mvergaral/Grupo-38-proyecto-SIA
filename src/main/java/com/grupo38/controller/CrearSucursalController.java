@@ -37,7 +37,7 @@ public class CrearSucursalController {
                 Stage stage = (Stage) regionField.getScene().getWindow();
                 stage.close();
 
-                verSucursalesController.mostrarTooltipExito();
+                verSucursalesController.mostrarTooltip("Sucursal creada exitosamente", true);
 
                 // Recargar la lista de sucursales en la tabla
                 if (verSucursalesController != null) {

@@ -6,26 +6,37 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.grupo38.controller.MainController" style="-fx-background-color: #f0f4f8;">
 
     <!-- Barra de menús -->
     <top>
-        <MenuBar style="-fx-background-color: #2e8b57; -fx-text-fill: white;">
-            <Menu text="Menu" style="-fx-text-fill: white;">
-                <MenuItem text="Gestionar Sucursales" onAction="#verSucursales"/>
-                <MenuItem text="Gestionar Equipos" onAction="#gestionarEquipos"/>
+        <MenuBar style="-fx-background-color: #2e8b57; -fx-padding: 10px; -fx-text-fill: white;" fx:id="menuBar">
+            <Menu text="Gestión" fx:id="gestionMenu">
+                <MenuItem text="Gestionar Sucursales" onAction="#verSucursales" />
+                <MenuItem text="Gestionar Equipos" onAction="#gestionarEquipos" />
             </Menu>
         </MenuBar>
     </top>
 
     <!-- Mensaje de bienvenida en el centro -->
     <center>
-        <VBox fx:id="contentPane" alignment="CENTER" spacing="20" style="-fx-padding: 50px;">
-            <Label text="Bienvenido al sistema EquipOS" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2e8b57;"/>
-            <Label text="Gestione sus sucursales y equipos de manera eficiente" style="-fx-font-size: 16px; -fx-text-fill: #555555;"/>
+        <VBox fx:id="contentPane" alignment="CENTER" spacing="30" style="-fx-padding: 50px;">
+            <Label text="Bienvenido a EquipOS" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #2e8b57; -fx-padding-bottom: 20px;" />
+            <Label text="Gestiona tus sucursales y equipos de forma rápida y eficiente" style="-fx-font-size: 18px; -fx-text-fill: #555555;" />
+            <HBox spacing="15" alignment="CENTER" style="-fx-padding-top: 30px;">
+                <Label text="Seleccione una opción del menú para comenzar" style="-fx-font-size: 16px; -fx-text-fill: #888888;" />
+            </HBox>
         </VBox>
     </center>
+
+    <!-- Pie de página -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-padding: 15px; -fx-background-color: #2e8b57;">
+            <Label text="EquipOS © 2024" style="-fx-font-size: 14px; -fx-text-fill: white;" />
+        </HBox>
+    </bottom>
 
 </BorderPane>

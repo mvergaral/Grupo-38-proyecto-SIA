@@ -1,6 +1,7 @@
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/config/DatabaseInitializer.java
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/controller/MainController.java
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/model/Arriendo.java
+/Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/controller/EditarSucursalController.java
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/config/HibernateUtil.java
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/controller/AgregarEquipoController.java
 /Users/mvergaral/Documents/Universidad/ProgramacionAvanzada/Grupo-38-proyecto-SIA/src/main/java/com/grupo38/exceptions/EquipoNoDisponibleException.java

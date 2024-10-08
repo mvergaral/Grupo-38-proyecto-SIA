@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.grupo38.controller.EditarSucursalController" spacing="15" alignment="CENTER" style="-fx-padding: 20px; -fx-background-color: #f4f4f4;">
+
+    <!-- Título de la vista -->
+    <Label text="Editar Sucursal" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2e8b57;" />
+
+    <!-- Formulario de edición -->
+    <GridPane hgap="10" vgap="10" style="-fx-padding: 10px;">
+        <!-- Comuna -->
+        <Label text="Comuna:" style="-fx-font-size: 14px;" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="comunaField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <!-- Dirección -->
+        <Label text="Dirección:" style="-fx-font-size: 14px;" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="direccionField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <!-- Región -->
+        <Label text="Región:" style="-fx-font-size: 14px;" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="regionField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    </GridPane>
+
+    <!-- Botón de confirmación -->
+    <Button text="Confirmar Cambios" onAction="#confirmarCambios" fx:id="confirmarButton"
+            style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8px 15px;" />
+</VBox>
